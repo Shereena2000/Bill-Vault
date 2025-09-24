@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950938298568",
+    "project_id": "bill-vault",
+    "storage_bucket": "bill-vault.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950938298568:android:7c4ea5ceae90b3d5885dfd",
+        "android_client_info": {
+          "package_name": "com.example.bill_vault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc3F8yIeOvyAtwcHfr1CxLfR9m8n5i-ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
