@@ -36,7 +36,7 @@ class CustomTextFeild extends StatefulWidget {
   final String? Function(String? val)? validation;
   final TextInputType? keyboardType;
   final bool readOnly;
-
+final bool obscureText;
   const CustomTextFeild({
     super.key,
     this.onTap,
@@ -67,6 +67,7 @@ class CustomTextFeild extends StatefulWidget {
     this.readOnly = false,
     this.height,
     this.prefixIconSize,
+     this.obscureText = false,
   });
 
   @override
@@ -153,6 +154,7 @@ class _CustomTextFeildState extends State<CustomTextFeild> {
           height: widget.maxLine == 1 ? (widget.height ?? 48) : null,
           child: TextFormField(
             readOnly: widget.readOnly,
+            obscureText: widget.obscureText,
             onTap: widget.onTap,
             onFieldSubmitted: widget.onSubmitted,
             focusNode: widget.focusNode,

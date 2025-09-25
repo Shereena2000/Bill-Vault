@@ -10,25 +10,32 @@ import 'Settings/utils/p_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
+  bool firebaseInitialized = false;
+  
   try {
     // Initialize Firebase
     await Firebase.initializeApp();
+    firebaseInitialized = true;
     
-    // Initialize default data (run this once when app starts)
+    // Initialize default data only if Firebase was initialized successfully
     await FirebaseService.initializeDefaultData();
     
     print('Firebase initialized successfully');
   } catch (e) {
     print('Error initializing Firebase: $e');
+    firebaseInitialized = false;
   }
   
-  runApp(MultiProvider(providers: providers, child: const MyApp()));
+  runApp(MultiProvider(
+    providers: providers,
+    child: MyApp(firebaseInitialized: firebaseInitialized),
+  ));
 }
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool firebaseInitialized;
+  const MyApp({super.key, required this.firebaseInitialized});
 
   @override
   Widget build(BuildContext context) {

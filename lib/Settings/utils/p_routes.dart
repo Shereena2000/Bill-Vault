@@ -1,3 +1,6 @@
+import 'package:bill_vault/Features/auth/login_screen/view/ui.dart';
+import 'package:bill_vault/Features/auth/sigun_up/view/ui.dart';
+import 'package:bill_vault/Features/subscription_screens/select_subscription_type/view/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Features/product_screens/pruchase_detail/view/ui.dart';
@@ -6,6 +9,10 @@ import '../../Features/product_screens/select_brand/view/ui.dart';
 import '../../Features/product_screens/select_product/view/ui.dart';
 import '../../Features/product_screens/select_warranty_period/view/ui.dart';
 import '../../Features/splash/view/ui.dart';
+import '../../Features/subscription_screens/selectSubscriptionBrandScreen/view/ui.dart';
+import '../../Features/subscription_screens/select_sub_reccurring_period/view/ui.dart';
+import '../../Features/subscription_screens/subscription_registration_date/view/ui.dart';
+import '../../Features/subscription_screens/subscription_registration_date/view_model/subscription_reg_view_model.dart';
 import '../../Features/wrapper/view/ui.dart';
 import 'p_pages.dart';
 
@@ -58,6 +65,53 @@ class Routes {
           settings: settings, // Important: Pass settings so arguments are available
           builder: (context) => SelectWarrantyPeriodScreen()
         );
+
+      case PPages.login:
+        return MaterialPageRoute(builder: (context) =>LoginScreen());
+      case PPages.signUp:
+        return MaterialPageRoute(builder: (context) =>SignUpScreen());
+
+
+
+case PPages.selectSubscriptionTypePageUi:
+  return MaterialPageRoute(builder: (context) => SelectSubscriptionTypeScreen());
+
+
+   case PPages.selectSubscriptionBrandPageUi:
+  final subscriptionType = settings.arguments as String;
+  return MaterialPageRoute(
+    builder: (context) => SelectSubscriptionBrandScreen(subscriptionType: subscriptionType)
+  );
+
+
+case PPages.subscriptionRegistrationDatePageUi:
+  return MaterialPageRoute(
+    settings: settings,
+    builder: (context) => ChangeNotifierProvider(
+      create: (_) {
+        final viewModel = SubscriptionRegistrationDateViewModel();
+        final args = settings.arguments as Map<String, dynamic>?;
+        if (args != null) {
+          print('Subscription registration route - args received: $args');
+          viewModel.setSubscriptionDetails(
+            args['subscriptionType'] ?? '',
+            args['subscriptionName'] ?? '',
+            args['brand'] ?? '',
+          );
+        }
+        return viewModel;
+      },
+      child: SubscriptionRegistrationDateScreen(),
+    ),
+  );
+
+
+    case PPages.selectSubscriptionRecurringPeriodPageUi:
+  return MaterialPageRoute(
+    settings: settings,
+    builder: (context) => SelectSubscriptionRecurringPeriodScreen()
+  );
+
 
       default:
         return MaterialPageRoute(

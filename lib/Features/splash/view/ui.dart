@@ -1,6 +1,9 @@
+// lib/Features/splash/view/ui.dart
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../Settings/utils/p_colors.dart';
 import '../../../Settings/utils/p_pages.dart';
+import '../../auth/view_model/auth_view_model.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -149,14 +152,37 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  void checkLogin() {
-    Future.delayed(const Duration(seconds: 3), () {
-      if (!mounted) return;
+  void checkLogin() async {
+  // Wait for animation to complete
+  await Future.delayed(const Duration(seconds: 3));
+  
+  if (!mounted) return;
+
+  try {
+    // Check authentication status
+    final authProvider = Provider.of<AuthViewModel>(context, listen: false);
+    bool isLoggedIn = await authProvider.checkLoginStatus();
+    
+    if (mounted) {
+      String routeName = isLoggedIn ? PPages.wrapperPageUi : PPages.login;
+      
       Navigator.pushNamedAndRemoveUntil(
         context,
-        PPages.wrapperPageUi,
+        routeName,
         (route) => false,
       );
-    });
+    }
+  } catch (e) {
+    print('Error checking login status: $e');
+    
+    if (mounted) {
+      // If there's an error, default to login screen
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        PPages.login,
+        (route) => false,
+      );
+    }
   }
+}
 }
