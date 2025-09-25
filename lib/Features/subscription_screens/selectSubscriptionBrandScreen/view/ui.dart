@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/view/select_subscription_brand_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +6,7 @@ import '../../../../Settings/utils/p_colors.dart';
 import '../../../../Settings/utils/p_pages.dart';
 import '../../../commom_widgets/custom_appbar.dart';
 import '../../../commom_widgets/custom_text_feild.dart';
-import 'sub_brand_view_model.dart';
+import '../view_model/sub_brand_view_model.dart';
 import 'widgets/subscription_brand_card.dart';
 
 class SelectSubscriptionBrandScreen extends StatefulWidget {
@@ -65,15 +64,7 @@ class _SelectSubscriptionBrandScreenState extends State<SelectSubscriptionBrandS
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                CustomTextFeild(
-                  controller: _searchController,
-                  prefixIcon: Icon(Icons.search),
-                  prefixfn: () {},
-                  hintText: "Search brands",
-                  filColor: PColors.darkGray,
-//onChanged: (value) => provider.searchBrands(value),
-                ),
-                SizeBoxH(18),
+            
                 Expanded(
                   child: GridView.builder(
                     itemCount: provider.brands.length,

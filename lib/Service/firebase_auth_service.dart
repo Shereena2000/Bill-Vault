@@ -107,7 +107,7 @@ class FirebaseAuthService {
     }
   }
   
-  // Check if user is already logged in (for splash screen)
+
   static Future<bool> checkLoginStatus() async {
     try {
       // Check if user is authenticated with Firebase
@@ -152,7 +152,6 @@ class FirebaseAuthService {
     }
   }
   
-  // Update user profile (removed email update)
   static Future<bool> updateUserProfile({
     String? username,
   }) async {
@@ -179,7 +178,6 @@ class FirebaseAuthService {
     }
   }
   
-  // Send password reset email
   static Future<bool> sendPasswordResetEmail(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -199,13 +197,10 @@ class FirebaseAuthService {
     try {
       User? user = _auth.currentUser;
       if (user != null) {
-        // Delete user document from Firestore
         await _firestore.collection('users').doc(user.uid).delete();
         
-        // Delete Firebase Auth user
         await user.delete();
         
-        // Clear login state
         await _saveLoginState(false);
         
         print('User account deleted successfully');
@@ -218,24 +213,19 @@ class FirebaseAuthService {
     }
   }
   
-  // Validate email format
   static bool isValidEmail(String email) {
     return RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email);
   }
   
-  // Validate password strength
   static bool isValidPassword(String password) {
-    // At least 6 characters
     return password.length >= 6;
   }
   
-  // Save login state to SharedPreferences
   static Future<void> _saveLoginState(bool isLoggedIn) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', isLoggedIn);
   }
   
-  // Convert FirebaseAuth error codes to user-friendly messages
   static String _getErrorMessage(String errorCode) {
     switch (errorCode) {
       case 'user-not-found':

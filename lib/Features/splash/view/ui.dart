@@ -1,4 +1,3 @@
-// lib/Features/splash/view/ui.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../Settings/utils/p_colors.dart';

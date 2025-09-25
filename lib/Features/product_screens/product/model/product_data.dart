@@ -1,4 +1,3 @@
-// Create this as a new file: lib/Features/product_screens/models/product_data.dart
 
 class ProductData {
   final String productType;

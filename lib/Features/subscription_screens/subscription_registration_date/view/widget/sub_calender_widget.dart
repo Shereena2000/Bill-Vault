@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/view/widgets/subscription_calendar_widget.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

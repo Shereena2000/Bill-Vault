@@ -67,7 +67,7 @@ class _SelectProductScreenState extends State<SelectProductScreen> {
                   prefixfn: () {},
                   hintText: "Search",
                   filColor: PColors.darkGray,
-            //      onChanged: (value) => provider.searchProductTypes(value),
+                 onChanged: (value) => provider.searchProductTypes(value??''),
                 ),
                 SizeBoxH(18),
                 Expanded(

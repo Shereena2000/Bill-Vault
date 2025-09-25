@@ -144,28 +144,7 @@ class _SelectWarrantyPeriodScreenState extends State<SelectWarrantyPeriodScreen>
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                // Show product info
-                if (productData != null) ...[
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Product: ${productData!.productType}'),
-                        Text('Brand: ${productData!.brand}'),
-                        Text('Name: ${productData!.productName}'),
-                        Text('Purchase Date: ${productData!.purchaseDate.toString().split(' ')[0]}'),
-                        if (productData!.billImagePath != null)
-                          Text('Bill Image: Available'),
-                      ],
-                    ),
-                  ),
-                  SizeBoxH(16),
-                ],
+         
                 
                 Expanded(
                   child: GridView.builder(

@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/view_model/subscription_registration_date_vm.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

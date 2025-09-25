@@ -69,7 +69,7 @@ class _SelectBrandScreenState extends State<SelectBrandScreen> {
                   hintText: "Search",
                   filColor: PColors.darkGray,
 
-                //  onChanged: (value) => provider.searchBrands(value),
+                onChanged: (value) => provider.searchBrands(value??''),
                 ),
                 SizeBoxH(18),
                 Expanded(

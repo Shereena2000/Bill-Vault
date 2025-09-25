@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/view_model/select_subscription_recurring_period_vm.dart
 
 import 'dart:io';
 import 'package:flutter/material.dart';

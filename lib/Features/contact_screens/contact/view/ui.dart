@@ -81,7 +81,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       prefixfn: () {},
                       hintText: "Search contacts...",
                       filColor: PColors.darkGray,
-                    //  onChanged: (value) => provider.searchContacts(value),
+                     onChanged: (value) => provider.searchContacts(value??''),
                     ),
                     SizeBoxH(18),
                   ],

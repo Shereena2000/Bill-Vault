@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/model/subscription_data.dart
 
 class SubscriptionData {
   final String subscriptionType;

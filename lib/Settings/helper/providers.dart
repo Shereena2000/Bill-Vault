@@ -8,7 +8,7 @@ import '../../Features/product_screens/pruchase_detail/view_model/purchase_detai
 import '../../Features/product_screens/select_brand/view_model/select_view_model.dart';
 import '../../Features/product_screens/select_product/view_model/select_view_model.dart';
 import '../../Features/product_screens/select_warranty_period/view/view_model/select_warranty_viewmodel.dart';
-import '../../Features/subscription_screens/selectSubscriptionBrandScreen/view/sub_brand_view_model.dart';
+import '../../Features/subscription_screens/selectSubscriptionBrandScreen/view_model/sub_brand_view_model.dart';
 import '../../Features/subscription_screens/select_sub_reccurring_period/view_model.dart/sub_reccurring_period_view_model.dart';
 import '../../Features/subscription_screens/select_subscription_type/view_model/subscription_type_view_model.dart';
 import '../../Features/subscription_screens/subscription_registration_date/view_model/subscription_reg_view_model.dart';
@@ -19,7 +19,6 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => WrapperViewModel()),
   ChangeNotifierProvider(create: (_) => AuthViewModel()),
 
-  // Product flow providers
   ChangeNotifierProvider(create: (_) => ProductViewModel()),
   ChangeNotifierProvider(create: (_) => SelectProductViewModel()),
   ChangeNotifierProvider(create: (_) => SelectBrandViewModel()),

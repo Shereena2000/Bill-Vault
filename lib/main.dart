@@ -13,11 +13,9 @@ void main() async {
   bool firebaseInitialized = false;
   
   try {
-    // Initialize Firebase
     await Firebase.initializeApp();
     firebaseInitialized = true;
     
-    // Initialize default data only if Firebase was initialized successfully
     await FirebaseService.initializeDefaultData();
     
     print('Firebase initialized successfully');

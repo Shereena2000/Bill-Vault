@@ -1,4 +1,3 @@
-// Create this as: lib/Features/subscription_screens/view/widgets/subscription_type_card.dart
 
 import 'package:flutter/material.dart';
 import '../../../../../Settings/utils/p_colors.dart';

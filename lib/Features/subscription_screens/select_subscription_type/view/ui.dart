@@ -109,18 +109,8 @@ class _SelectSubscriptionTypeScreenState extends State<SelectSubscriptionTypeScr
               children: [
                
                 
-                CustomTextFeild(
-                  controller: _searchController,
-                  prefixIcon: Icon(Icons.search),
-                  prefixfn: () {},
-                  hintText: "Search",
-                  filColor: PColors.darkGray,
-                  // onChanged: (value) {
-                  //   print('Search query: $value');
-                  //   provider.searchSubscriptionTypes(value);
-                  // },
-                ),
-                SizeBoxH(18),
+           
+               
                 Expanded(
                   child: GridView.builder(
                     itemCount: provider.subscriptionTypes.length,

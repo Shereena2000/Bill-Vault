@@ -17,7 +17,7 @@ class FirebaseService {
   static const String _brandsCollection = 'brands';
   static const String _productTypesCollection = 'product_types';
 
-  // Product CRUD Operations
+  // Product  
   static Future<String> addProduct(ProductModel product) async {
     try {
       String productId = _uuid.v4();
@@ -161,8 +161,8 @@ static Future<void> initializeDefaultData() async {
     // Add default product types with correct asset paths
     List<ProductTypeModel> defaultProductTypes = [
       ProductTypeModel(id: '1', name: 'Air Conditioner', imageUrl: 'assets/images/fridge.png'),
-      ProductTypeModel(id: '2', name: 'Air Fryer', imageUrl: 'assets/images/airfryer.png'), // Check if this file exists
-      ProductTypeModel(id: '3', name: 'Microwave', imageUrl: 'assets/images/washingmachine.png'), // Check if this file exists
+      ProductTypeModel(id: '2', name: 'Air Fryer', imageUrl: 'assets/images/airfryer.png'), 
+      ProductTypeModel(id: '3', name: 'Microwave', imageUrl: 'assets/images/microwave.png'), 
       ProductTypeModel(id: '4', name: 'Laptop', imageUrl: 'assets/images/laptop.png'),
       ProductTypeModel(id: '5', name: 'Television', imageUrl: 'assets/images/television.png'),
       ProductTypeModel(id: '6', name: 'Phone', imageUrl: 'assets/images/phone.png'),

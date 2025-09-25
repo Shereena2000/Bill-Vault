@@ -4,19 +4,18 @@ import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 
 class CloudinaryService {
-  // Replace these with your Cloudinary credentials
+ 
   static const String cloudName = 'dvcodgbkd';
   static const String apiKey = '692484724374318';
   static const String apiSecret = 'hIZ6N5OjvIFXks9wWAAcveYA8v8';
-  static const String uploadPreset = 'bill_vault_preset'; // Optional: for unsigned uploads
+  static const String uploadPreset = 'bill_vault_preset'; 
 
   static Future<String> uploadImage(File imageFile, String productId) async {
     try {
-      // Option 1: Using upload preset (unsigned upload - recommended for client-side)
       if (uploadPreset.isNotEmpty) {
         return await _uploadWithPreset(imageFile, productId);
       } else {
-        // Option 2: Using signed upload
+        
         return await _uploadSigned(imageFile, productId);
       }
     } catch (e) {
@@ -24,7 +23,6 @@ class CloudinaryService {
     }
   }
 
-  // Method 1: Upload with preset (unsigned) - Recommended
   static Future<String> _uploadWithPreset(File imageFile, String productId) async {
     final url = Uri.parse('https://api.cloudinary.com/v1_1/$cloudName/image/upload');
     
@@ -35,7 +33,6 @@ class CloudinaryService {
     request.fields['public_id'] = 'bill_${productId}_${DateTime.now().millisecondsSinceEpoch}';
     request.fields['resource_type'] = 'image';
     
-    // Add the file
     request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
     
     final response = await request.send();
@@ -50,12 +47,10 @@ class CloudinaryService {
     }
   }
 
-  // Method 2: Signed upload (requires API secret)
   static Future<String> _uploadSigned(File imageFile, String productId) async {
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final publicId = 'bill_${productId}_$timestamp';
     
-    // Create signature
     final params = {
       'timestamp': timestamp,
       'public_id': publicId,
@@ -91,25 +86,21 @@ class CloudinaryService {
 
   // Generate signature for signed uploads
   static String _generateSignature(Map<String, String> params, String apiSecret) {
-    // Sort parameters
     var sortedParams = Map.fromEntries(
         params.entries.toList()..sort((a, b) => a.key.compareTo(b.key)));
     
-    // Create string to sign
     String stringToSign = sortedParams.entries
         .map((entry) => '${entry.key}=${entry.value}')
         .join('&');
     
     stringToSign += apiSecret;
     
-    // Generate SHA1 hash
     var bytes = utf8.encode(stringToSign);
     var digest = sha1.convert(bytes);
     
     return digest.toString();
   }
 
-  // Delete image from Cloudinary
   static Future<bool> deleteImage(String publicId) async {
     try {
       final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
