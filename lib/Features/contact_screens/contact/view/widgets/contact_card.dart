@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../Settings/constants/sized_box.dart';
 import '../../../../../Settings/utils/p_colors.dart';
@@ -129,11 +128,7 @@ class ContactCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () => _makePhoneCall(contact.phone, context),
-                  icon: Icon(Icons.call, color: Colors.green),
-                  tooltip: 'Call ${contact.name}',
-                ),
+                
               ],
             ),
             
@@ -156,30 +151,6 @@ class ContactCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _makePhoneCall(String phoneNumber, BuildContext context) async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
-    
-    try {
-      if (await canLaunchUrl(phoneUri)) {
-        await launchUrl(phoneUri);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Could not launch phone dialer'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error making phone call: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
   }
 
   String _formatDate(DateTime date) {

@@ -16,16 +16,22 @@ class SelectProductViewModel extends ChangeNotifier {
 
   Future<void> loadProductTypes() async {
     try {
+      print('📱 Starting to load product types...');
       _isLoading = true;
       _error = null;
       notifyListeners();
 
       _productTypes = await FirebaseService.getProductTypes();
+        print('📱 Loaded ${_productTypes.length} product types');
+        _productTypes.forEach((type) {
+      print('  - ${type.name} (${type.imageUrl})');
+    });
       _filteredProductTypes = _productTypes;
       
       _isLoading = false;
       notifyListeners();
     } catch (e) {
+       print('❌ Error loading product types: $e');
       _error = e.toString();
       _isLoading = false;
       notifyListeners();

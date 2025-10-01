@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Service/firebase_service.dart';
 import '../../../../Settings/constants/sized_box.dart';
 import '../../../../Settings/utils/p_colors.dart';
 import '../../../commom_widgets/custom_appbar.dart';
@@ -69,6 +70,15 @@ class _SelectProductScreenState extends State<SelectProductScreen> {
                   filColor: PColors.darkGray,
                  onChanged: (value) => provider.searchProductTypes(value??''),
                 ),
+                ElevatedButton(
+  onPressed: () async {
+    print('Manually initializing default data...');
+    await FirebaseService.initializeDefaultData();
+    await FirebaseService.initializeSubscriptionDefaultData();
+    print('Initialization complete');
+  },
+  child: Text('Initialize Firebase Data'),
+),
                 SizeBoxH(18),
                 Expanded(
                   child: GridView.builder(
@@ -94,6 +104,22 @@ class _SelectProductScreenState extends State<SelectProductScreen> {
           );
         },
       ),
+      floatingActionButton: // Add this at the top of your SelectProductScreen body
+FloatingActionButton(
+  onPressed: () async {
+    print('🔄 Manually initializing Firebase data...');
+    try {
+      await FirebaseService.initializeDefaultData();
+      print('✅ Initialization complete');
+      // Reload product types
+      context.read<SelectProductViewModel>().loadProductTypes();
+    } catch (e) {
+      print('❌ Initialization failed: $e');
+    }
+  },
+  child: Icon(Icons.refresh),
+  backgroundColor: Colors.blue,
+),
     );
   }
 }

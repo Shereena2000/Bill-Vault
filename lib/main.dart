@@ -18,7 +18,7 @@ void main() async {
     
     await FirebaseService.initializeDefaultData();
     
-    print('Firebase initialized successfully');
+    print('Firebase initialized successfully 🍒');
   } catch (e) {
     print('Error initializing Firebase: $e');
     firebaseInitialized = false;

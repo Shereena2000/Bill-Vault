@@ -46,7 +46,6 @@ dependencies:
   http: ^1.5.0
   crypto: ^3.0.6
   cached_network_image: ^3.4.1
-  url_launcher: ^6.3.2
   firebase_auth: ^6.1.0
   shared_preferences: ^2.5.3
 

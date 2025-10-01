@@ -75,6 +75,7 @@ class ContactViewModel extends ChangeNotifier {
         profession: profession.trim(),
       );
 
+
       await FirebaseService.addContact(contact);
       
       _isLoading = false;

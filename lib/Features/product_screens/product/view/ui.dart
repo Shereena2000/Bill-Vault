@@ -81,7 +81,7 @@ class _ProductScreenState extends State<ProductScreen> {
             if (!provider.hasProducts) {
               print('Showing no products message');
               return Container(
-                height: MediaQuery.of(context).size.height - 200, // Give it height
+                height: MediaQuery.of(context).size.height - 200, 
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -131,9 +131,11 @@ class _ProductScreenState extends State<ProductScreen> {
                       );
                     },
                   ),
+                  
                 ],
               ),
             );
+            
           },
         ),
       ),

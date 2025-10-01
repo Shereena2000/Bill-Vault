@@ -1,4 +1,3 @@
-
 class ProductData {
   final String productType;
   final String productName;

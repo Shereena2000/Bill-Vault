@@ -1,7 +1,7 @@
 import 'package:bill_vault/Settings/utils/p_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 import '../../../../Settings/constants/sized_box.dart';
 import '../../../../Settings/utils/p_colors.dart';
@@ -22,6 +22,7 @@ class _ContactScreenState extends State<ContactScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
+  
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -208,9 +209,7 @@ class _ContactScreenState extends State<ContactScreen> {
           icon: Icon(Icons.more_vert, color: Colors.grey[400]),
           onSelected: (value) {
             switch (value) {
-              case 'call':
-                _makePhoneCall(contact.phone);
-                break;
+         
               case 'edit':
                 _showEditContactDialog(context, contact);
                 break;
@@ -220,16 +219,7 @@ class _ContactScreenState extends State<ContactScreen> {
             }
           },
           itemBuilder: (context) => [
-            PopupMenuItem(
-              value: 'call',
-              child: Row(
-                children: [
-                  Icon(Icons.phone, size: 18),
-                  SizeBoxV(8),
-                  Text('Call'),
-                ],
-              ),
-            ),
+           
             PopupMenuItem(
               value: 'edit',
               child: Row(
@@ -544,27 +534,4 @@ class _ContactScreenState extends State<ContactScreen> {
     );
   }
 
-  void _makePhoneCall(String phoneNumber) async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
-    
-    try {
-      if (await canLaunchUrl(phoneUri)) {
-        await launchUrl(phoneUri);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Could not launch phone dialer'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error making phone call: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
 }
