@@ -1,4 +1,5 @@
 import 'package:bill_vault/Settings/utils/p_colors.dart';
+import 'package:bill_vault/Settings/utils/p_pages.dart';
 import 'package:bill_vault/Settings/utils/p_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title, style: PTextStyles.displaySmall),
       centerTitle: false,
       actions: [
+        IconButton(onPressed: (){
+          Navigator.pushNamed(context, PPages.privacyPolicyPageUi);
+        }, icon: Icon(Icons.settings_outlined)),
         IconButton(
           icon: const Icon(Icons.logout),
           onPressed: () async {

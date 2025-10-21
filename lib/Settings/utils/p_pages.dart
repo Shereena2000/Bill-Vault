@@ -16,4 +16,5 @@ class PPages {
   static const String subscriptionRegistrationDatePageUi =
       "/subscriptionRegistrationDatePageUi";
       static const String selectSubscriptionRecurringPeriodPageUi = "/selectSubscriptionRecurringPeriodPageUi";
+        static const String privacyPolicyPageUi = "/privacyPolicyPageUi";
 }

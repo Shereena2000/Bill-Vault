@@ -1,5 +1,6 @@
 import 'package:bill_vault/Features/auth/login_screen/view/ui.dart';
 import 'package:bill_vault/Features/auth/sigun_up/view/ui.dart';
+import 'package:bill_vault/Features/settings/privacy_policy/view/ui.dart';
 import 'package:bill_vault/Features/subscription_screens/select_subscription_type/view/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -110,6 +111,11 @@ case PPages.subscriptionRegistrationDatePageUi:
   return MaterialPageRoute(
     settings: settings,
     builder: (context) => SelectSubscriptionRecurringPeriodScreen()
+  );
+    case PPages.privacyPolicyPageUi:
+  return MaterialPageRoute(
+    settings: settings,
+    builder: (context) => PrivacyPolicyScreen()
   );
 
 
